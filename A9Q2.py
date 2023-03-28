@@ -23,10 +23,27 @@ class treenode(object):
         in the given tree.
         """
         if tnode is None:
-            return
+            return None
 
         if tnode.data == t:
             tnode.data = r
 
-        subst(tnode.left, t, r)
-        subst(tnode.right, t, r)
+        treenode.subst(tnode.left, t, r)
+        treenode.subst(tnode.right, t, r)
+
+    def copy(tnode):
+        """
+        Create a new copy of the given tree with the same structure and data values.
+        """
+        if tnode is None:
+            return None
+
+        # create a new treenode with the same data value
+        new_node = treenode(tnode.data)
+
+        # recursively copy the left and right subtrees
+        new_node.left = treenode.copy(tnode.left)
+        new_node.right = treenode.copy(tnode.right)
+
+        return new_node
+
