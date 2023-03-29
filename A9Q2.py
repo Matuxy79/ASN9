@@ -47,3 +47,14 @@ class treenode(object):
 
         return new_node
 
+    def collect_data_inorder(tnode):
+        """
+        Collect all the data values in the given tree in in-order sequence.
+        Returns a list of data values.
+        """
+        result = []
+        if tnode is not None:
+            result.extend(treenode.collect_data_inorder(tnode.left))
+            result.append(tnode.data)
+            result.extend(treenode.collect_data_inorder(tnode.right))
+        return result
