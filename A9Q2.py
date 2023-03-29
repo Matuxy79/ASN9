@@ -58,3 +58,19 @@ class treenode(object):
             result.append(tnode.data)
             result.extend(treenode.collect_data_inorder(tnode.right))
         return result
+
+    def count_smaller(tnode, target):
+        """
+        Count the number of data values in the given tree that are less than the given target value.
+        Assumes that the given tree has data values that are numbers only.
+        """
+        count = 0
+        if tnode is not None:
+            if tnode.data < target:
+                count += 1
+                count += treenode.count_smaller(tnode.left, target)
+                count += treenode.count_smaller(tnode.right, target)
+            else:
+                count += treenode.count_smaller(tnode.left, target)
+        return count
+

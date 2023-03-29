@@ -54,3 +54,18 @@ data_list = treenode.collect_data_inorder(root)
 
 # print the data values
 print(data_list)  # prints [3, 2, 4, 1, 6, 5, 7]
+
+# creating a tree to test count smaller
+root = treenode(5,
+               left=treenode(3,
+                             left=treenode(2),
+                             right=treenode(4)),
+               right=treenode(7,
+                              left=treenode(6),
+                              right=treenode(8)))
+
+# count the number of values smaller than 6
+count = treenode.count_smaller(root, 6)
+
+# print the count
+print(count)  # prints 3
